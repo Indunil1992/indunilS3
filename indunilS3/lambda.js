@@ -2,5 +2,5 @@
 exports.handler = function (event, context, callback) {
 
 
-    callback(null, { "message": "Successfully newdemo executed" });
+    callback(null, { "message": "Successfully testrun executed" });
 }
