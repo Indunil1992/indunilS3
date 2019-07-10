@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully check1 executed\" });\n}",
+        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully newdemo executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,7 +32,7 @@
         },
         "triggers": [
           {
-            "resourceName": "s3check1",
+            "resourceName": "s3newdemo",
             "config": {
               "type": "s3:ObjectCreated:*",
               "keyPrefix": "",
@@ -78,6 +78,17 @@
             "name": "check1"
           }
         }
+      },
+      "s3newdemo": {
+        "name": "s3newdemo",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "newdemo"
+          }
+        }
       }
     },
     "customTemplate": {
@@ -113,7 +124,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562749359727
+    "lastSave": 1562749572703
   },
   "VCS_STATE": {
     "provider": "GitHub",
