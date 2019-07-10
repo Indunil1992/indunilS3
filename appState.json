@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully ti executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully test123 executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,9 +32,9 @@
         },
         "triggers": [
           {
-            "resourceName": "s3indunil1",
+            "resourceName": "s3test1234",
             "config": {
-              "type": "s3:ReducedRedundancyLostObject",
+              "type": "s3:ObjectCreated:*",
               "keyPrefix": "",
               "keySuffix": ""
             }
@@ -67,6 +67,39 @@
             "name": "indunil1"
           }
         }
+      },
+      "s3test": {
+        "name": "s3test",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "test"
+          }
+        }
+      },
+      "s3test123": {
+        "name": "s3test123",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "test123"
+          }
+        }
+      },
+      "s3test1234": {
+        "name": "s3test1234",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "test1234"
+          }
+        }
       }
     },
     "customTemplate": {
@@ -94,7 +127,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562747865504
+    "lastSave": 1562748873271
   },
   "VCS_STATE": {
     "provider": "GitHub",
