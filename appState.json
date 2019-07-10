@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n\n    callback(null, { \"message\": \"Successfully test executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"abs\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"test\"\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully run executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -31,10 +31,6 @@
           "layers": []
         },
         "triggers": [
-          {
-            "resourceName": "apigusEast1MergeTestAPIindunilqatstany",
-            "config": {}
-          },
           {
             "resourceName": "s3as2TestLahiru",
             "config": {
@@ -61,31 +57,6 @@
     ],
     "currentFileId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
     "resources": {
-      "apigusEast1MergeTestAPIindunilqatstany": {
-        "name": "apigusEast1MergeTestAPIindunilqatstany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "MergeTestAPI",
-          "apiId": "1dp0mqpbbd",
-          "endpointType": "EDGE",
-          "rootResourceId": "l020w6tf16",
-          "existingResources": {
-            "/": "l020w6tf16",
-            "/test": "oq4t5h"
-          },
-          "resourceMode": 0,
-          "resourceName": "indunil/qa/tst",
-          "resourcePath": "/indunil/qa/tst",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test",
-          "mode": 1
-        }
-      },
       "s3as2TestLahiru": {
         "name": "s3as2TestLahiru",
         "type": "S3",
@@ -94,6 +65,17 @@
           "bucket": {
             "region": "us-east-1",
             "name": "as2-test-lahiru"
+          }
+        }
+      },
+      "s3indunil1": {
+        "name": "s3indunil1",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "indunil1"
           }
         }
       }
@@ -131,7 +113,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562752503776
+    "lastSave": 1562753930862
   },
   "VCS_STATE": {
     "provider": "GitHub",
