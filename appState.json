@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully fff executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully remv executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -34,12 +34,20 @@
           {
             "resourceName": "s3indunil1",
             "config": {
-              "type": "s3:ObjectCreated:Put",
-              "keyPrefix": "",
-              "keySuffix": ""
+              "type": "s3:ObjectRemoved:*",
+              "keyPrefix": "as",
+              "keySuffix": "az"
             }
           }
-        ]
+        ],
+        "testCases": {
+          "64bdfe12-2920-462b-a547-086baf9a4ae8": {
+            "id": "64bdfe12-2920-462b-a547-086baf9a4ae8",
+            "name": "Unnamed event",
+            "functionId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
       }
     },
     "deletedFiles": [],
@@ -86,7 +94,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562745953689
+    "lastSave": 1562747545883
   },
   "VCS_STATE": {
     "provider": "GitHub",
