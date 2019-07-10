@@ -1,0 +1,98 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "7f3c5458-c0b0-4448-8dfd-8e13407d434f": {
+        "id": "7f3c5458-c0b0-4448-8dfd-8e13407d434f",
+        "parent": null,
+        "name": "indunilS3",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "8a2d2b39-4f1e-449d-b157-7bd6bcd76729"
+        ],
+        "isRemovable": false,
+        "filePath": "indunilS3"
+      },
+      "8a2d2b39-4f1e-449d-b157-7bd6bcd76729": {
+        "id": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
+        "parent": "7f3c5458-c0b0-4448-8dfd-8e13407d434f",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "indunilS3/lambda.js",
+        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully fff executed\"});\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": [
+          {
+            "resourceName": "s3indunil1",
+            "config": {
+              "type": "s3:ObjectCreated:Put",
+              "keyPrefix": "",
+              "keySuffix": ""
+            }
+          }
+        ]
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "7f3c5458-c0b0-4448-8dfd-8e13407d434f",
+    "openFiles": [
+      "8a2d2b39-4f1e-449d-b157-7bd6bcd76729"
+    ],
+    "currentFileId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
+    "resources": {
+      "s3indunil1": {
+        "name": "s3indunil1",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "indunil1"
+          }
+        }
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "indunilS3",
+    "projectDescription": "indunilS3",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1562745953689
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "indunilS3",
+      "url": "https://github.com/Indunil1992/indunilS3"
+    }
+  }
+}
