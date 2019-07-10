@@ -1,7 +1,6 @@
-exports.handler = function(event, context, callback) {
+
+exports.handler = function (event, context, callback) {
 
 
-
-    
-    callback(null, {"message": "Successfully test123 executed"});
+    callback(null, { "message": "Successfully check1 executed" });
 }

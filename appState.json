@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully test123 executed\"});\n}",
+        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully check1 executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,7 +32,7 @@
         },
         "triggers": [
           {
-            "resourceName": "s3test1234",
+            "resourceName": "s3check1",
             "config": {
               "type": "s3:ObjectCreated:*",
               "keyPrefix": "",
@@ -57,39 +57,6 @@
     ],
     "currentFileId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
     "resources": {
-      "s3indunil1": {
-        "name": "s3indunil1",
-        "type": "S3",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "indunil1"
-          }
-        }
-      },
-      "s3test": {
-        "name": "s3test",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "test"
-          }
-        }
-      },
-      "s3test123": {
-        "name": "s3test123",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "test123"
-          }
-        }
-      },
       "s3test1234": {
         "name": "s3test1234",
         "type": "S3",
@@ -98,6 +65,17 @@
           "bucket": {
             "region": "us-east-1",
             "name": "test1234"
+          }
+        }
+      },
+      "s3check1": {
+        "name": "s3check1",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "check1"
           }
         }
       }
@@ -117,7 +95,15 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -127,7 +113,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562748873271
+    "lastSave": 1562749359727
   },
   "VCS_STATE": {
     "provider": "GitHub",
