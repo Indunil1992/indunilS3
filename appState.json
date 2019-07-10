@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"abs\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"test\"\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully run executed\" });\n}",
+        "code": "\n\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully run executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -37,6 +37,14 @@
               "type": "s3:ObjectCreated:*",
               "keyPrefix": ".abs",
               "keySuffix": ".ext"
+            }
+          },
+          {
+            "resourceName": "s3test1072019",
+            "config": {
+              "type": "s3:ObjectCreated:Put",
+              "keyPrefix": "",
+              "keySuffix": ".png"
             }
           }
         ],
@@ -68,14 +76,14 @@
           }
         }
       },
-      "s3indunil1": {
-        "name": "s3indunil1",
+      "s3test1072019": {
+        "name": "s3test1072019",
         "type": "S3",
         "config": {
-          "mode": 1,
+          "mode": 0,
           "bucket": {
             "region": "us-east-1",
-            "name": "indunil1"
+            "name": "test1072019"
           }
         }
       }
@@ -113,7 +121,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562753930862
+    "lastSave": 1562755826951
   },
   "VCS_STATE": {
     "provider": "GitHub",
