@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully testrun executed\" });\n}",
+        "code": "\nexports.handler = function (event, context, callback) {\n\n\n\n    callback(null, { \"message\": \"Successfully abs executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,10 +32,14 @@
         },
         "triggers": [
           {
-            "resourceName": "s3induniltest7102019",
+            "resourceName": "apigusEast1MergeTestAPIindunilqatstany",
+            "config": {}
+          },
+          {
+            "resourceName": "s3as2TestLahiru",
             "config": {
               "type": "s3:ObjectCreated:*",
-              "keyPrefix": "",
+              "keyPrefix": "abs",
               "keySuffix": ""
             }
           }
@@ -57,47 +61,39 @@
     ],
     "currentFileId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
     "resources": {
-      "s3test1234": {
-        "name": "s3test1234",
-        "type": "S3",
+      "apigusEast1MergeTestAPIindunilqatstany": {
+        "name": "apigusEast1MergeTestAPIindunilqatstany",
+        "type": "API_GATEWAY",
         "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "test1234"
-          }
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "MergeTestAPI",
+          "apiId": "1dp0mqpbbd",
+          "endpointType": "EDGE",
+          "rootResourceId": "l020w6tf16",
+          "existingResources": {
+            "/": "l020w6tf16",
+            "/test": "oq4t5h"
+          },
+          "resourceMode": 0,
+          "resourceName": "indunil/qa/tst",
+          "resourcePath": "/indunil/qa/tst",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test",
+          "mode": 1
         }
       },
-      "s3check1": {
-        "name": "s3check1",
+      "s3as2TestLahiru": {
+        "name": "s3as2TestLahiru",
         "type": "S3",
         "config": {
-          "mode": 0,
+          "mode": 1,
           "bucket": {
             "region": "us-east-1",
-            "name": "check1"
-          }
-        }
-      },
-      "s3newdemo": {
-        "name": "s3newdemo",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "newdemo"
-          }
-        }
-      },
-      "s3induniltest7102019": {
-        "name": "s3induniltest7102019",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "induniltest7102019"
+            "name": "as2-test-lahiru"
           }
         }
       }
@@ -135,7 +131,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562749805340
+    "lastSave": 1562751300890
   },
   "VCS_STATE": {
     "provider": "GitHub",
