@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully remv executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    callback(null, {\"message\": \"Successfully ti executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -34,9 +34,9 @@
           {
             "resourceName": "s3indunil1",
             "config": {
-              "type": "s3:ObjectRemoved:*",
-              "keyPrefix": "as",
-              "keySuffix": "az"
+              "type": "s3:ReducedRedundancyLostObject",
+              "keyPrefix": "",
+              "keySuffix": ""
             }
           }
         ],
@@ -94,7 +94,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562747545883
+    "lastSave": 1562747865504
   },
   "VCS_STATE": {
     "provider": "GitHub",
