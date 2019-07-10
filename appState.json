@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n\n    callback(null, { \"message\": \"Successfully abs executed\" });\n}",
+        "code": "\nexports.handler = function (event, context, callback) {\n\n\n\n    callback(null, { \"message\": \"Successfully test executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -39,8 +39,8 @@
             "resourceName": "s3as2TestLahiru",
             "config": {
               "type": "s3:ObjectCreated:*",
-              "keyPrefix": "abs",
-              "keySuffix": ""
+              "keyPrefix": ".abs",
+              "keySuffix": ".ext"
             }
           }
         ],
@@ -131,7 +131,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562751300890
+    "lastSave": 1562752503776
   },
   "VCS_STATE": {
     "provider": "GitHub",
