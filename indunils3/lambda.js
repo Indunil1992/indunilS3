@@ -5,11 +5,11 @@ exports.handler = function (event, context, callback) {
 
     s3.getObject({
         'Bucket': "indunil1",
-        'Key': "1"
+        'Key': "1.jpg"
     }).promise()
         .then(data => {
             console.log("Success");
-                 console.log( data );
+            console.log(data);
             console.log(data);           // successful response
             /*
             data = {
@@ -26,7 +26,7 @@ exports.handler = function (event, context, callback) {
         })
         .catch(err => {
             console.log("not Success");
-                 console.log( err );
+            console.log(err);
             console.log(err, err.stack); // an error occurred
         });
 
