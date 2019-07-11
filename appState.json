@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n\n\n\n\n    \n    callback(null, {\"message\": \"Successfully 33 executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,14 +32,18 @@
         },
         "triggers": [
           {
-            "resourceName": "s3indunil1",
-            "config": {
-              "type": "s3:ObjectRemoved:DeleteMarkerCreated",
-              "keyPrefix": "1",
-              "keySuffix": ""
-            }
+            "resourceName": "snsusEast1TestSNS",
+            "config": {}
           }
-        ]
+        ],
+        "testCases": {
+          "0028958e-e960-4f08-bba0-c32338642395": {
+            "id": "0028958e-e960-4f08-bba0-c32338642395",
+            "name": "Unnamed event",
+            "functionId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
       }
     },
     "deletedFiles": [],
@@ -49,15 +53,16 @@
     ],
     "currentFileId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
     "resources": {
-      "s3indunil1": {
-        "name": "s3indunil1",
-        "type": "S3",
+      "snsusEast1TestSNS": {
+        "name": "snsusEast1TestSNS",
+        "type": "SNS",
         "config": {
-          "mode": 1,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "indunil1"
-          }
+          "topicMode": 1,
+          "topicName": "TestSNS",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
+          "topicRegion": "us-east-1",
+          "snsType": 0,
+          "subscriptions": []
         }
       }
     },
@@ -86,7 +91,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562842568857
+    "lastSave": 1562845287512
   },
   "VCS_STATE": {
     "provider": "GitHub",
