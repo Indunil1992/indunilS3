@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nlet SL_AWS = require('slappforge-sdk-aws');\nconst sqs = new SL_AWS.SQS(AWS);\n\nexports.handler = function (event, context, callback) {\n    sqs.receiveMessage({\n        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/sample`,\n        AttributeNames: ['All'],\n        MaxNumberOfMessages: '3',\n        VisibilityTimeout: '30',\n        WaitTimeSeconds: '0',\n        MessageAttributeNames: ['1', '2', '3', '4']\n    }).promise()\n        .then(receivedMsgData => {\n            if (!!(receivedMsgData) && !!(receivedMsgData.Messages)) {\n                let receivedMessages = receivedMsgData.Messages;\n                receivedMessages.forEach(message => {\n                     console.log(\"reccc message\");\n                 console.log( message );\n                    // your logic to access each message through out the loop. Each message is available under variable message \n                    // within this block\n                });\n            } else {\n                 console.log(\"Success\");\n                 //console.log( data );\n                // No messages to process\n            }\n        })\n        .catch(err => {\n             console.log(\"not Success\");\n                 console.log( err );\n            // error handling goes here\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully 33 executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nlet SL_AWS = require('slappforge-sdk-aws');\nconst sqs = new SL_AWS.SQS(AWS);\n\nexports.handler = function (event, context, callback) {\n    sqs.receiveMessage({\n        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/sample`,\n        AttributeNames: ['ApproximateReceiveCount'],\n        MaxNumberOfMessages: '3',\n        VisibilityTimeout: '30',\n        WaitTimeSeconds: '0',\n        MessageAttributeNames: ['1', '2', '3', '4']\n    }).promise()\n        .then(receivedMsgData => {\n            if (!!(receivedMsgData) && !!(receivedMsgData.Messages)) {\n                let receivedMessages = receivedMsgData.Messages;\n                receivedMessages.forEach(message => {\n                    console.log(\"reccc message\");\n                    console.log(message);\n                    // your logic to access each message through out the loop. Each message is available under variable message \n                    // within this block\n                });\n            } else {\n                console.log(\"Success\");\n                //console.log( data );\n                // No messages to process\n            }\n        })\n        .catch(err => {\n            console.log(\"not Success\");\n            console.log(err);\n            // error handling goes here\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully 33 executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -88,8 +88,7 @@
           "messageRetentionPeriodUnit": "days",
           "maximumMessageSize": 256,
           "receiveMessageWaitTime": 0,
-          "deadLetterQueueName": "",
-          "contentBasedDeduplication": false
+          "deadLetterQueueName": ""
         }
       }
     },
@@ -133,7 +132,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562849389992
+    "lastSave": 1562850061020
   },
   "VCS_STATE": {
     "provider": "GitHub",
