@@ -1,28 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "7f3c5458-c0b0-4448-8dfd-8e13407d434f": {
-        "id": "7f3c5458-c0b0-4448-8dfd-8e13407d434f",
+      "47c32af8-46cf-4208-996c-7f29750bdbd7": {
+        "id": "47c32af8-46cf-4208-996c-7f29750bdbd7",
         "parent": null,
-        "name": "indunilS3",
+        "name": "indunils3",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "8a2d2b39-4f1e-449d-b157-7bd6bcd76729"
+          "bcc34366-2ee8-4c20-a232-e0c66118855f"
         ],
         "isRemovable": false,
-        "filePath": "indunilS3"
+        "filePath": "indunils3"
       },
-      "8a2d2b39-4f1e-449d-b157-7bd6bcd76729": {
-        "id": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
-        "parent": "7f3c5458-c0b0-4448-8dfd-8e13407d434f",
+      "bcc34366-2ee8-4c20-a232-e0c66118855f": {
+        "id": "bcc34366-2ee8-4c20-a232-e0c66118855f",
+        "parent": "47c32af8-46cf-4208-996c-7f29750bdbd7",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "indunilS3/lambda.js",
-        "code": "\n\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully run executed\" });\n}",
+        "filePath": "indunils3/lambda.js",
+        "code": "exports.handler = function(event, context, callback) {\n\n\n\n    \n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,58 +32,31 @@
         },
         "triggers": [
           {
-            "resourceName": "s3as2TestLahiru",
+            "resourceName": "s3indunil1",
             "config": {
-              "type": "s3:ObjectCreated:*",
-              "keyPrefix": ".abs",
-              "keySuffix": ".ext"
-            }
-          },
-          {
-            "resourceName": "s3test1072019",
-            "config": {
-              "type": "s3:ObjectCreated:Put",
-              "keyPrefix": "",
-              "keySuffix": ".png"
+              "type": "s3:ObjectRemoved:DeleteMarkerCreated",
+              "keyPrefix": "1",
+              "keySuffix": ""
             }
           }
-        ],
-        "testCases": {
-          "64bdfe12-2920-462b-a547-086baf9a4ae8": {
-            "id": "64bdfe12-2920-462b-a547-086baf9a4ae8",
-            "name": "Unnamed event",
-            "functionId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        ]
       }
     },
     "deletedFiles": [],
-    "rootNode": "7f3c5458-c0b0-4448-8dfd-8e13407d434f",
+    "rootNode": "47c32af8-46cf-4208-996c-7f29750bdbd7",
     "openFiles": [
-      "8a2d2b39-4f1e-449d-b157-7bd6bcd76729"
+      "bcc34366-2ee8-4c20-a232-e0c66118855f"
     ],
-    "currentFileId": "8a2d2b39-4f1e-449d-b157-7bd6bcd76729",
+    "currentFileId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
     "resources": {
-      "s3as2TestLahiru": {
-        "name": "s3as2TestLahiru",
+      "s3indunil1": {
+        "name": "s3indunil1",
         "type": "S3",
         "config": {
           "mode": 1,
           "bucket": {
             "region": "us-east-1",
-            "name": "as2-test-lahiru"
-          }
-        }
-      },
-      "s3test1072019": {
-        "name": "s3test1072019",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "test1072019"
+            "name": "indunil1"
           }
         }
       }
@@ -103,31 +76,23 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {
-        "aws-sdk": {
-          "name": "aws-sdk",
-          "language": "javascript",
-          "version": "2.176.0",
-          "dev": true,
-          "notRemovable": false
-        }
-      }
+      "dependencies": {}
     }
   },
   "PROJECT_META": {
-    "projectName": "indunilS3",
-    "projectDescription": "indunilS3",
+    "projectName": "indunils3",
+    "projectDescription": "s3",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562755826951
+    "lastSave": 1562842568857
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
-      "name": "indunilS3",
-      "url": "https://github.com/Indunil1992/indunilS3"
+      "name": "indunils3",
+      "url": "https://github.com/Indunil1992/indunils3"
     }
   }
 }
