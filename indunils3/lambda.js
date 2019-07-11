@@ -1,35 +1,36 @@
 let AWS = require('aws-sdk');
-const s3 = new AWS.S3();
+let SL_AWS = require('slappforge-sdk-aws');
+const sqs = new SL_AWS.SQS(AWS);
 
 exports.handler = function (event, context, callback) {
-
-    s3.getObject({
-        'Bucket': "indunil1",
-        'Key': "1.jpg"
+    sqs.receiveMessage({
+        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/sample`,
+        AttributeNames: ['All'],
+        MaxNumberOfMessages: '3',
+        VisibilityTimeout: '30',
+        WaitTimeSeconds: '0',
+        MessageAttributeNames: ['1', '2', '3', '4']
     }).promise()
-        .then(data => {
-            console.log("Success");
-            console.log(data);
-            console.log(data);           // successful response
-            /*
-            data = {
-                AcceptRanges: "bytes", 
-                ContentLength: 3191, 
-                ContentType: "image/jpeg", 
-                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"", 
-                LastModified: "<Date Representation>", 
-                Metadata: {}, 
-                TagCount: 2, 
-                VersionId: "null"
+        .then(receivedMsgData => {
+            if (!!(receivedMsgData) && !!(receivedMsgData.Messages)) {
+                let receivedMessages = receivedMsgData.Messages;
+                receivedMessages.forEach(message => {
+                     console.log("reccc message");
+                 console.log( message );
+                    // your logic to access each message through out the loop. Each message is available under variable message 
+                    // within this block
+                });
+            } else {
+                 console.log("Success");
+                 //console.log( data );
+                // No messages to process
             }
-            */
         })
         .catch(err => {
-            console.log("not Success");
-            console.log(err);
-            console.log(err, err.stack); // an error occurred
+             console.log("not Success");
+                 console.log( err );
+            // error handling goes here
         });
-
 
 
 
