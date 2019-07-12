@@ -34,11 +34,21 @@
           {
             "resourceName": "snsusEast1TestSNS",
             "config": {}
+          },
+          {
+            "resourceName": "apigusEast1MurdochPOCAPIapiget",
+            "config": {}
           }
         ],
         "testCases": {
           "0028958e-e960-4f08-bba0-c32338642395": {
             "id": "0028958e-e960-4f08-bba0-c32338642395",
+            "name": "Unnamed event",
+            "functionId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          },
+          "a268fd33-e1dd-41a4-ba29-f6307f4960e0": {
+            "id": "a268fd33-e1dd-41a4-ba29-f6307f4960e0",
             "name": "Unnamed event",
             "functionId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
             "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
@@ -85,6 +95,33 @@
           "receiveMessageWaitTime": "0",
           "queueARN": "arn:aws:sqs:us-east-1:318300609668:Hiru1T"
         }
+      },
+      "apigusEast1MurdochPOCAPIapiget": {
+        "name": "apigusEast1MurdochPOCAPIapiget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "MurdochPOCAPI",
+          "apiId": "bwv8v3igsk",
+          "endpointType": "EDGE",
+          "rootResourceId": "w8q0lqrv6j",
+          "existingResources": {
+            "/redcap": "20mv9x",
+            "/redcap/api": "in4abo",
+            "/": "w8q0lqrv6j"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/redcap/api",
+          "resourceName": "api",
+          "resourceId": "in4abo",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test",
+          "mode": 1
+        }
       }
     },
     "customTemplate": {
@@ -127,7 +164,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562905784155
+    "lastSave": 1562906444074
   },
   "VCS_STATE": {
     "provider": "GitHub",
