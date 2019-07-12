@@ -1,24 +1,16 @@
 let AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
+
 exports.handler = function (event, context, callback) {
 
     s3.putObject({
-  "Body": "content of object 1",
-  "Bucket": "indunil1",
-  "Key": "object indunil",
-  "ServerSideEncryption": "AES256",
-  "ACL": "authenticated-read",
-  "Metadata": {
-    "mt1": "mtv1",
-    "mt2": "mtv2",
-    "x": "xm"
-  },
-  "Tagging": "tk1=tv1"
-})
+        "Body": "testrun",
+        "Bucket": "indunil1",
+        "Key": "induobject"
+    })
         .promise()
         .then(data => {
-            console.log("successful response");
             console.log(data);           // successful response
             /*
             data = {
@@ -28,7 +20,6 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-            console.log("not successful response");
             console.log(err, err.stack); // an error occurred
         });
 
