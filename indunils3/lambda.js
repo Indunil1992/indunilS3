@@ -7,11 +7,13 @@ exports.handler = function (event, context, callback) {
         "Body": "test",
         "Bucket": "indunil1",
         "Key": "a1",
-        "Tagging": "tk4=345",
+        "ServerSideEncryption": "AES256",
+        "ACL": "private",
         "Metadata": {
             "metadata1": "1",
             "metadata2": "2"
-        }
+        },
+        "Tagging": "t5=555"
     })
         .promise()
         .then(data => {

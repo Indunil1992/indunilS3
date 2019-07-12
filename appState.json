@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\n\nexports.handler = function (event, context, callback) {\n    s3.putObject({\n        \"Body\": \"test\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"a1\",\n        \"Tagging\": \"tk4=345\",\n        \"Metadata\": {\n            \"metadata1\": \"1\",\n            \"metadata2\": \"2\"\n        }\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\n\nexports.handler = function (event, context, callback) {\n    s3.putObject({\n        \"Body\": \"test\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"a1\",\n        \"ServerSideEncryption\": \"AES256\",\n        \"ACL\": \"private\",\n        \"Metadata\": {\n            \"metadata1\": \"1\",\n            \"metadata2\": \"2\"\n        },\n        \"Tagging\": \"t5=555\"\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -129,7 +129,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562930493143
+    "lastSave": 1562933842521
   },
   "VCS_STATE": {
     "provider": "GitHub",
