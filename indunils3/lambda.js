@@ -4,17 +4,18 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
     s3.putObject({
-        "Body": "content of object 1",
-        "Bucket": "indunil1",
-        "Key": "object indunil",
-        "ServerSideEncryption": "AES256",
-        "ACL": "authenticated-read",
-        "Tagging": "tk1=tv1",
-        "Metadata": {
-            "mt1": "mtv1",
-            "mt2": "mtv2"
-        }
-    })
+  "Body": "content of object 1",
+  "Bucket": "indunil1",
+  "Key": "object indunil",
+  "ServerSideEncryption": "AES256",
+  "ACL": "authenticated-read",
+  "Metadata": {
+    "mt1": "mtv1",
+    "mt2": "mtv2",
+    "x": "xm"
+  },
+  "Tagging": "tk1=tv1"
+})
         .promise()
         .then(data => {
             console.log("successful response");
