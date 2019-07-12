@@ -5,7 +5,7 @@ exports.handler = function (event, context, callback) {
 
     s3.listObjects({
         'Bucket': 'indunil1',
-        'MaxKeys': 4,
+        'MaxKeys': 3,
         'Prefix': '1'
     }).promise()
         .then(data => {
