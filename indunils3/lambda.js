@@ -6,14 +6,14 @@ exports.handler = function (event, context, callback) {
     s3.putObject({
         "Body": "content of object 1",
         "Bucket": "indunil1",
-        "Key": "object",
+        "Key": "object indunil",
         "ServerSideEncryption": "AES256",
         "ACL": "authenticated-read",
+        "Tagging": "tag1=tagv1",
         "Metadata": {
             "mt1": "mtv1",
             "mt2": "mtv2"
-        },
-        "Tagging": "k1=v1&k2=v2"
+        }
     })
         .promise()
         .then(data => {
