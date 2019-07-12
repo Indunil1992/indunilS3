@@ -1,30 +1,41 @@
+let AWS = require('aws-sdk');
+const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
-   
 
-    sqs.receiveAndDeleteMessages({
-        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/test-queue.fifo`,
-        AttributeNames: ['All'],
-        MaxNumberOfMessages: '1',
-        VisibilityTimeout: '30',
-        WaitTimeSeconds: '0',
-        MessageAttributeNames: ['ko', 'koo']
-    }, function (receivedMessages) {
-         console.log("msg Success");
-                    console.log();
-        // implement received message filtering logic here and return filtered set of messages which 
-        // are allowed to delete in the next step
-        return receivedMessages;
-    }, function (deleteSuccessData) {
-         console.log("msg delete Success");
-                    console.log(deleteSuccessData);
-        // implement delete success state here
-    }, function (error) {
-         console.log("err Success");
-                    console.log(error);
-        // implement error handling logic here
-    });
-
+    s3.listObjects({
+        'Bucket': 'indunil1',
+        'MaxKeys': 4,
+        'Prefix': '1'
+    }).promise()
+        .then(data => {
+            console.log("successful response");
+            console.log(data);     
+                  // successful response
+            /*
+            data = {
+                Contents: [
+                    {
+                       ETag: "\"70ee1738b6b21e2c8a43f3a5ab0eee71\"",
+                       Key: "example1.jpg",
+                       LastModified: "<Date Representation>",
+                       Owner: {
+                          DisplayName: "myname",
+                          ID: "12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"
+                       },
+                       Size: 11,
+                       StorageClass: "STANDARD"
+                    },
+                    // {...}
+                ]
+            }
+            */
+        })
+        .catch(err => {
+            console.log("an error occurred");
+            //console.log(data);
+            console.log(err, err.stack); // an error occurred
+        });
 
 
 

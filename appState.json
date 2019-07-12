@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n   \n\n    sqs.receiveAndDeleteMessages({\n        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/test-queue.fifo`,\n        AttributeNames: ['All'],\n        MaxNumberOfMessages: '1',\n        VisibilityTimeout: '30',\n        WaitTimeSeconds: '0',\n        MessageAttributeNames: ['ko', 'koo']\n    }, function (receivedMessages) {\n         console.log(\"msg Success\");\n                    console.log();\n        // implement received message filtering logic here and return filtered set of messages which \n        // are allowed to delete in the next step\n        return receivedMessages;\n    }, function (deleteSuccessData) {\n         console.log(\"msg delete Success\");\n                    console.log(deleteSuccessData);\n        // implement delete success state here\n    }, function (error) {\n         console.log(\"err Success\");\n                    console.log(error);\n        // implement error handling logic here\n    });\n\n\n\n\n    callback(null, { \"message\": \"Successfully jij executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.listObjects({\n        'Bucket': 'indunil1',\n        'MaxKeys': 4,\n        'Prefix': '1'\n    }).promise()\n        .then(data => {\n            console.log(\"successful response\");\n            console.log(data);     \n                  // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(\"an error occurred\");\n            //console.log(data);\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully jij executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,11 +32,7 @@
         },
         "triggers": [
           {
-            "resourceName": "snsusEast1TestSNS",
-            "config": {}
-          },
-          {
-            "resourceName": "apigusEast1MurdochPOCAPIapiget",
+            "resourceName": "apigusEast1sachithraAPInameqainduany",
             "config": {}
           }
         ],
@@ -63,85 +59,39 @@
     ],
     "currentFileId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
     "resources": {
-      "snsusEast1TestSNS": {
-        "name": "snsusEast1TestSNS",
-        "type": "SNS",
-        "config": {
-          "topicMode": 1,
-          "topicName": "TestSNS",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "subscriptions": []
-        }
-      },
-      "sqsHiru1T": {
-        "name": "sqsHiru1T",
-        "type": "SQS",
+      "s3indunil1": {
+        "name": "s3indunil1",
+        "type": "S3",
         "config": {
           "mode": 1,
-          "existing": true,
-          "name": "Hiru1T",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/Hiru1T",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": "0",
-          "deliveryDelayUnit": "seconds",
-          "queueType": "standardQueue",
-          "defaultVisibilityTimeout": "120",
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": "345600",
-          "messageRetentionPeriodUnit": "seconds",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": "0",
-          "queueARN": "arn:aws:sqs:us-east-1:318300609668:Hiru1T"
+          "bucket": {
+            "region": "us-east-1",
+            "name": "indunil1"
+          }
         }
       },
-      "apigusEast1MurdochPOCAPIapiget": {
-        "name": "apigusEast1MurdochPOCAPIapiget",
+      "apigusEast1sachithraAPInameqainduany": {
+        "name": "apigusEast1sachithraAPInameqainduany",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
           "apiMode": 1,
-          "apiName": "MurdochPOCAPI",
-          "apiId": "bwv8v3igsk",
-          "endpointType": "EDGE",
-          "rootResourceId": "w8q0lqrv6j",
+          "apiName": "sachithraAPIname",
+          "apiId": "052p9kjn18",
+          "endpointType": "REGIONAL",
+          "rootResourceId": "zrjp6rdv3b",
           "existingResources": {
-            "/redcap": "20mv9x",
-            "/redcap/api": "in4abo",
-            "/": "w8q0lqrv6j"
+            "/": "zrjp6rdv3b"
           },
-          "resourceMode": 1,
-          "resourcePath": "/redcap/api",
-          "resourceName": "api",
-          "resourceId": "in4abo",
-          "restMethod": "GET",
+          "resourceMode": 0,
+          "resourceName": "qa/indu",
+          "resourcePath": "/qa/indu",
+          "restMethod": "ANY",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 0,
-          "stageName": "test",
+          "stageName": "Test",
           "mode": 1
-        }
-      },
-      "sqstestQueuefifo": {
-        "name": "sqstestQueuefifo",
-        "type": "SQS",
-        "config": {
-          "mode": 1,
-          "existing": true,
-          "name": "test-queue.fifo",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/test-queue.fifo",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": "0",
-          "deliveryDelayUnit": "seconds",
-          "queueType": "fifoQueue",
-          "defaultVisibilityTimeout": "30",
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": "345600",
-          "messageRetentionPeriodUnit": "seconds",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": "0",
-          "queueARN": "arn:aws:sqs:us-east-1:318300609668:test-queue.fifo"
         }
       }
     },
@@ -185,7 +135,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562907031831
+    "lastSave": 1562911474577
   },
   "VCS_STATE": {
     "provider": "GitHub",
