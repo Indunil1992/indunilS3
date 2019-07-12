@@ -6,7 +6,7 @@ exports.handler = function (event, context, callback) {
     sqs.receiveMessage({
         QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/Hiru1T`,
         AttributeNames: ['All'],
-        MaxNumberOfMessages: '1',
+        MaxNumberOfMessages: '3',
         VisibilityTimeout: '30',
         WaitTimeSeconds: '0',
         MessageAttributeNames: ['as', 'ad']
@@ -16,19 +16,19 @@ exports.handler = function (event, context, callback) {
                 let receivedMessages = receivedMsgData.Messages;
                 receivedMessages.forEach(message => {
                     console.log("msg Success");
-                 console.log( message );
+                    console.log(message);
                     // your logic to access each message through out the loop. Each message is available under variable message 
                     // within this block
                 });
             } else {
                 console.log("no msg to Success");
-                 //console.log( data );
+                //console.log( data );
                 // No messages to process
             }
         })
         .catch(err => {
             console.log("err Success");
-                 console.log( err );
+            console.log(err);
             // error handling goes here
         });
 
