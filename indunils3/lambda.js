@@ -5,7 +5,7 @@ exports.handler = function (event, context, callback) {
 
     s3.listObjects({
         'Bucket': 'indunil1',
-        'MaxKeys': 6,
+        'MaxKeys': 2,
         'Prefix': '1'
     }).promise()
         .then(data => {
@@ -39,5 +39,5 @@ exports.handler = function (event, context, callback) {
 
 
 
-    callback(null, { "message": "Successfully jij executed" });
+    callback(null, { "message": "Successfully tim executed" });
 }
