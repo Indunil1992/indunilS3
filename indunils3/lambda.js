@@ -11,7 +11,10 @@ exports.handler = function (event, context, callback) {
     })
         .promise()
         .then(data => {
-            console.log(data);           // successful response
+            console.log(data);      
+            console.log("Success");
+                 console.log( data );
+                 // successful response
             /*
             data = {
                 ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
@@ -20,6 +23,8 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
+            console.log("not Success");
+                 console.log( err );
             console.log(err, err.stack); // an error occurred
         });
 
