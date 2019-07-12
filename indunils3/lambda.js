@@ -8,7 +8,7 @@ exports.handler = function (event, context, callback) {
         "Bucket": "indunil1",
         "Key": "object",
         "ServerSideEncryption": "aws:kms",
-        "ACL": "private",
+        "ACL": "aws-exec-read",
         "Metadata": {
             "mt": "mt1"
         },
