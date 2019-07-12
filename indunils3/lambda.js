@@ -8,11 +8,12 @@ exports.handler = function (event, context, callback) {
         "Bucket": "indunil1",
         "Key": "object",
         "ServerSideEncryption": "aws:kms",
-        "ACL": "aws-exec-read",
+        "ACL": "authenticated-read",
+        "Tagging": "k1=v1&k2=v2",
         "Metadata": {
-            "mt": "mt1"
-        },
-        "Tagging": "tagkey=tag1"
+            "mt1": "mtv1",
+            "mt2": "mtv2"
+        }
     })
         .promise()
         .then(data => {
