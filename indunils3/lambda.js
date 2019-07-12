@@ -9,7 +9,7 @@ exports.handler = function (event, context, callback) {
         "Key": "object indunil",
         "ServerSideEncryption": "AES256",
         "ACL": "authenticated-read",
-        "Tagging": "tag1=tagv1",
+        "Tagging": "tk1=tv1",
         "Metadata": {
             "mt1": "mtv1",
             "mt2": "mtv2"

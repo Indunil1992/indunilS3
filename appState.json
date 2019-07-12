@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"content of object 1\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"object indunil\",\n        \"ServerSideEncryption\": \"AES256\",\n        \"ACL\": \"authenticated-read\",\n        \"Tagging\": \"tag1=tagv1\",\n        \"Metadata\": {\n            \"mt1\": \"mtv1\",\n            \"mt2\": \"mtv2\"\n        }\n    })\n        .promise()\n        .then(data => {\n            console.log(\"successful response\");\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(\"not successful response\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"content of object 1\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"object indunil\",\n        \"ServerSideEncryption\": \"AES256\",\n        \"ACL\": \"authenticated-read\",\n        \"Tagging\": \"tk1=tv1\",\n        \"Metadata\": {\n            \"mt1\": \"mtv1\",\n            \"mt2\": \"mtv2\"\n        }\n    })\n        .promise()\n        .then(data => {\n            console.log(\"successful response\");\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(\"not successful response\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -129,7 +129,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562925020843
+    "lastSave": 1562925188727
   },
   "VCS_STATE": {
     "provider": "GitHub",
