@@ -4,12 +4,19 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
     s3.putObject({
-        "Body": "content of ob 1",
+        "Body": "content of object 1",
         "Bucket": "indunil1",
-        "Key": "object test 1"
+        "Key": "object",
+        "ServerSideEncryption": "aws:kms",
+        "ACL": "public-read-write",
+        "Tagging": "tagkey=tag1",
+        "Metadata": {
+            "mt": "mt1"
+        }
     })
         .promise()
         .then(data => {
+            console.log("successful response"); 
             console.log(data);           // successful response
             /*
             data = {
@@ -19,6 +26,7 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
+            console.log("not successful response"); 
             console.log(err, err.stack); // an error occurred
         });
 
