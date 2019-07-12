@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"test\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"123\"\n    })\n        .promise()\n        .then(data => {\n                        console.log(\"successful response\");           \n\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n             console.log(\"not not successful response\"); \n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"content of ob 1\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"object test 1\"\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -37,14 +37,8 @@
           }
         ],
         "testCases": {
-          "0028958e-e960-4f08-bba0-c32338642395": {
-            "id": "0028958e-e960-4f08-bba0-c32338642395",
-            "name": "Unnamed event",
-            "functionId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          },
-          "a268fd33-e1dd-41a4-ba29-f6307f4960e0": {
-            "id": "a268fd33-e1dd-41a4-ba29-f6307f4960e0",
+          "03dd9f6a-d7c5-4599-9bda-293652b478dd": {
+            "id": "03dd9f6a-d7c5-4599-9bda-293652b478dd",
             "name": "Unnamed event",
             "functionId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
             "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
@@ -135,7 +129,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562918498872
+    "lastSave": 1562919433566
   },
   "VCS_STATE": {
     "provider": "GitHub",
