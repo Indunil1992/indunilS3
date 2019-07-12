@@ -1,37 +1,32 @@
-let AWS = require('aws-sdk');
-let SL_AWS = require('slappforge-sdk-aws');
-const sqs = new SL_AWS.SQS(AWS);
 
 exports.handler = function (event, context, callback) {
-    sqs.receiveMessage({
-        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/Hiru1T`,
+   
+
+    sqs.receiveAndDeleteMessages({
+        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/test-queue.fifo`,
         AttributeNames: ['All'],
-        MaxNumberOfMessages: '3',
+        MaxNumberOfMessages: '1',
         VisibilityTimeout: '30',
         WaitTimeSeconds: '0',
-        MessageAttributeNames: ['as', 'ad']
-    }).promise()
-        .then(receivedMsgData => {
-            if (!!(receivedMsgData) && !!(receivedMsgData.Messages)) {
-                let receivedMessages = receivedMsgData.Messages;
-                receivedMessages.forEach(message => {
-                    console.log("msg Success");
-                    console.log(message);
-                    // your logic to access each message through out the loop. Each message is available under variable message 
-                    // within this block
-                });
-            } else {
-                console.log("no msg to Success");
-                //console.log( data );
-                // No messages to process
-            }
-        })
-        .catch(err => {
-            console.log("err Success");
-            console.log(err);
-            // error handling goes here
-        });
+        MessageAttributeNames: ['ko', 'koo']
+    }, function (receivedMessages) {
+         console.log("msg Success");
+                    console.log();
+        // implement received message filtering logic here and return filtered set of messages which 
+        // are allowed to delete in the next step
+        return receivedMessages;
+    }, function (deleteSuccessData) {
+         console.log("msg delete Success");
+                    console.log(deleteSuccessData);
+        // implement delete success state here
+    }, function (error) {
+         console.log("err Success");
+                    console.log(error);
+        // implement error handling logic here
+    });
 
 
-    callback(null, { "message": "Successfully 55 executed" });
+
+
+    callback(null, { "message": "Successfully jij executed" });
 }
