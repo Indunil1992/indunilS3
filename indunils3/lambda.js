@@ -5,13 +5,13 @@ exports.handler = function (event, context, callback) {
 
     s3.listObjects({
         'Bucket': 'indunil1',
-        'MaxKeys': 4,
+        'MaxKeys': 1,
         'Prefix': '1'
     }).promise()
         .then(data => {
             console.log("successful response");
-            console.log(data);     
-                  // successful response
+            console.log(data);
+            // successful response
             /*
             data = {
                 Contents: [
