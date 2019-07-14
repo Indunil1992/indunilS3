@@ -3,25 +3,24 @@ const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
 
-    s3.copyObject({
-        'Bucket': "hiru.test123",
-        'CopySource': `/indunil1/1.jpg`,
-        'Key': "1.jpg"
+    s3.deleteObject({
+        'Bucket': "indunil1",
+        'Key': "1"
     }).promise()
         .then(data => {
-            console.log(data);           // successful response
+            console.log(data);   
+             console.log("successful response"); 
+                     // successful response
             /*
-            data = {
-                CopyObjectResult: {
-                    ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
-                    LastModified: "<Date Representation>"
-                }
-            }
+                data = {}
             */
         })
         .catch(err => {
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack); 
+            console.log("an error occurred"); 
+            // an error occurred
         });
+
 
 
     callback(null, { "message": "Successfully copyyy executed" });
