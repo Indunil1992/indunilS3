@@ -5,7 +5,7 @@ exports.handler = function (event, context, callback) {
 
 
     s3.copyObject({
-        'Bucket': "hiru.test123",
+        'Bucket': "indunil2",
         'CopySource': `/indunil1/11111`,
         'Key': "11111"
     }).promise()
@@ -23,7 +23,7 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-              console.log("not successful response");
+            console.log("not successful response");
             console.log(err, err.stack); // an error occurred
         });
 
