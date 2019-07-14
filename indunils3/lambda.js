@@ -4,7 +4,7 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
     s3.getBucketLocation({
-        'Bucket': "indunil1"
+        'Bucket': "hiru.test123"
     }).promise()
         .then(data => {
             console.log("successful response");
