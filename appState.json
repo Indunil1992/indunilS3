@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully s3 executed\" });\n}",
+        "code": "\n\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully s3 executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,15 +32,15 @@
         },
         "triggers": [
           {
-            "resourceName": "s3indunil2",
+            "resourceName": "s3indunil1",
             "config": {
-              "type": "s3:ObjectCreated:*",
+              "type": "s3:ObjectCreated:Copy",
               "keyPrefix": "",
               "keySuffix": ""
             }
           },
           {
-            "resourceName": "apigusEast1myapindunilindunilqatstany",
+            "resourceName": "apigusEast1TestAPItestpost",
             "config": {}
           }
         ],
@@ -93,9 +93,6 @@
           "bucket": {
             "region": "us-east-1",
             "name": "indunil1"
-          },
-          "destinationBucket": {
-            "name": "indunil2"
           }
         }
       },
@@ -127,6 +124,41 @@
           "resourceName": "indunil/qa/tst",
           "resourcePath": "/indunil/qa/tst",
           "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test",
+          "mode": 1
+        }
+      },
+      "apigusEast1TestAPItestpost": {
+        "name": "apigusEast1TestAPItestpost",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/hiru/test": "2b8zt0",
+            "/testPathWithSlash": "2rkw74",
+            "/hiru": "3nc52b",
+            "/hiru/sample": "4226gg",
+            "/hiru/sqstest": "88gr2y",
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testWithSlash": "q4m4g1",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk",
+            "/hiru/snscheck": "wok1ku"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/hiru/test",
+          "resourceName": "test",
+          "resourceId": "2b8zt0",
+          "restMethod": "POST",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 0,
@@ -175,7 +207,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563069604840
+    "lastSave": 1563070028752
   },
   "VCS_STATE": {
     "provider": "GitHub",
