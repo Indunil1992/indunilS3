@@ -2,13 +2,16 @@ let AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
+
     s3.putObject({
-        "Body": "{weqwe},@123",
-        "Bucket": "test.indunil1",
-        "Key": "@123,{12}"
+        "Body": "1234567890",
+        "Bucket": "indunil1",
+        "Key": "142",
+        "ACL": "private"
     })
         .promise()
         .then(data => {
+            console.log("successful response");
             console.log(data);           // successful response
             /*
             data = {
@@ -18,9 +21,9 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
+            console.log("an error occurred");
             console.log(err, err.stack); // an error occurred
         });
-
 
 
     callback(null, { "message": "Successfully getlocation executed" });
