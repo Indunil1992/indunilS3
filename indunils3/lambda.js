@@ -5,7 +5,7 @@ exports.handler = function (event, context, callback) {
 
     s3.deleteObject({
         'Bucket': "indunil1",
-        'Key': "fd.jpg"
+        'Key': "1.jpg"
     }).promise()
         .then(data => {
             console.log(data);
