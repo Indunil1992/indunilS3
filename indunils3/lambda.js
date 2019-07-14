@@ -6,8 +6,8 @@ exports.handler = function (event, context, callback) {
 
     s3.copyObject({
         'Bucket': "indunil2",
-        'CopySource': `/indunil1/11111`,
-        'Key': "11111"
+        'CopySource': `/indunil1/1`,
+        'Key': "1"
     }).promise()
         .then(data => {
 
