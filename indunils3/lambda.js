@@ -3,24 +3,23 @@ const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
 
-    s3.deleteObject({
-        'Bucket': "indunil1",
-        'Key': "1.jpg"
+    s3.getBucketLocation({
+        'Bucket': "indunil1"
     }).promise()
-        .then(data => {
-            console.log(data);
-            console.log("successful response");
-            // successful response
+        .then(data => {  
+            console.log("successful response");   
+            console.log(data);           // successful response
             /*
-                data = {}
+            data = {
+                LocationConstraint: "us-west-2"
+            }
             */
         })
         .catch(err => {
-            console.log(err, err.stack);
-            console.log("an error occurred");
-            // an error occurred
+             
+            console.log("an error occurred"); 
+            console.log(err, err.stack); // an error occurred
         });
-
 
 
     callback(null, { "message": "Successfully copyyy executed" });
