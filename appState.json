@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.getBucketLocation({\n        'Bucket': \"hotspacesvendor-20181012153309-deployment\"\n    }).promise()\n        .then(data => {\n            console.log(\"successful response\");\n            console.log(data);           // successful response\n            /*\n            data = {\n                LocationConstraint: \"us-west-2\"\n            }\n            */\n        })\n        .catch(err => {\n\n            console.log(\"an error occurred\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully copyyy executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n\n    s3.listObjects({\n        'Bucket': 'sample.indunil',\n        'MaxKeys': 10,\n        'Prefix': '1'\n    }).promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n\n    callback(null, { \"message\": \"Successfully copyyy executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -80,25 +80,14 @@
           "mode": 1
         }
       },
-      "s3indunil1": {
-        "name": "s3indunil1",
+      "s3sampleindunil": {
+        "name": "s3sampleindunil",
         "type": "S3",
         "config": {
-          "mode": 1,
+          "mode": 0,
           "bucket": {
             "region": "us-east-1",
-            "name": "indunil1"
-          }
-        }
-      },
-      "s3hotspacesvendor20181012153309Deployment": {
-        "name": "s3hotspacesvendor20181012153309Deployment",
-        "type": "S3",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "hotspacesvendor-20181012153309-deployment"
+            "name": "sample.indunil"
           }
         }
       }
@@ -143,7 +132,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563075816538
+    "lastSave": 1563116268550
   },
   "VCS_STATE": {
     "provider": "GitHub",
