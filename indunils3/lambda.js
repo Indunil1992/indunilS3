@@ -4,10 +4,10 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
     s3.getBucketLocation({
-        'Bucket': "indunil1"
+        'Bucket': "hotspacesvendor-20181012153309-deployment"
     }).promise()
-        .then(data => {  
-            console.log("successful response");   
+        .then(data => {
+            console.log("successful response");
             console.log(data);           // successful response
             /*
             data = {
@@ -16,8 +16,8 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-             
-            console.log("an error occurred"); 
+
+            console.log("an error occurred");
             console.log(err, err.stack); // an error occurred
         });
 
