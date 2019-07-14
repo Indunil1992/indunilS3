@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n\n    s3.copyObject({\n        'Bucket': \"hiru.test123\",\n        'CopySource': `/indunil1/11111`,\n        'Key': \"11111\"\n    }).promise()\n        .then(data => {\n\n            console.log(\"successful response\");\n            console.log(data);           // successful response\n            /*\n            data = {\n                CopyObjectResult: {\n                    ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                    LastModified: \"<Date Representation>\"\n                }\n            }\n            */\n        })\n        .catch(err => {\n              console.log(\"not successful response\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully put executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n\n    s3.copyObject({\n        'Bucket': \"hiru.test123\",\n        'CopySource': `/indunil1/11111`,\n        'Key': \"11111\"\n    }).promise()\n        .then(data => {\n\n            console.log(\"successful response\");\n            console.log(data);           // successful response\n            /*\n            data = {\n                CopyObjectResult: {\n                    ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                    LastModified: \"<Date Representation>\"\n                }\n            }\n            */\n        })\n        .catch(err => {\n              console.log(\"not successful response\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully copy executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -34,6 +34,14 @@
           {
             "resourceName": "apigusEast1sachithraAPInameqainduany",
             "config": {}
+          },
+          {
+            "resourceName": "s3indunil2",
+            "config": {
+              "type": "s3:ObjectCreated:*",
+              "keyPrefix": "",
+              "keySuffix": ""
+            }
           }
         ],
         "testCases": {
@@ -90,6 +98,17 @@
             "name": "hiru.test123"
           }
         }
+      },
+      "s3indunil2": {
+        "name": "s3indunil2",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "indunil2"
+          }
+        }
       }
     },
     "customTemplate": {
@@ -132,7 +151,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563066193096
+    "lastSave": 1563066664259
   },
   "VCS_STATE": {
     "provider": "GitHub",

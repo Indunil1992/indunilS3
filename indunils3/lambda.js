@@ -29,5 +29,5 @@ exports.handler = function (event, context, callback) {
 
 
 
-    callback(null, { "message": "Successfully put executed" });
+    callback(null, { "message": "Successfully copy executed" });
 }
