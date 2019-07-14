@@ -4,10 +4,10 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
     s3.getBucketLocation({
-        'Bucket': "hiru.test123"
+        'Bucket': "indunil1"
     }).promise()
         .then(data => {
-             console.log("successful response"); 
+            console.log("successful response");
             console.log(data);           // successful response
             /*
             data = {
@@ -16,11 +16,11 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-                console.log("an error occurred"); 
+            console.log("an error occurred");
             console.log(err, err.stack); // an error occurred
         });
 
 
 
-    callback(null, { "message": "Successfully copyyy executed" });
+    callback(null, { "message": "Successfully getlocation executed" });
 }
