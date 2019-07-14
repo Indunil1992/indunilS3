@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"ass\",\n        \"Bucket\": \"indunil2\",\n        \"Key\": \"1\"\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n\n    callback(null, { \"message\": \"Successfully t executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.copyObject({\n        'Bucket': \"hiru.test123\",\n        'CopySource': `/indunil1/1.jpg`,\n        'Key': \"1.jpg\"\n    }).promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                CopyObjectResult: {\n                    ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                    LastModified: \"<Date Representation>\"\n                }\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully copyyy executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,15 +32,7 @@
         },
         "triggers": [
           {
-            "resourceName": "s3indunil1",
-            "config": {
-              "type": "s3:ObjectCreated:Copy",
-              "keyPrefix": "",
-              "keySuffix": ""
-            }
-          },
-          {
-            "resourceName": "apigusEast1TestAPItestpost",
+            "resourceName": "apigusEast1Londonqainduany",
             "config": {}
           }
         ],
@@ -61,18 +53,21 @@
     ],
     "currentFileId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
     "resources": {
-      "apigusEast1sachithraAPInameqainduany": {
-        "name": "apigusEast1sachithraAPInameqainduany",
+      "apigusEast1Londonqainduany": {
+        "name": "apigusEast1Londonqainduany",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
           "apiMode": 1,
-          "apiName": "sachithraAPIname",
-          "apiId": "052p9kjn18",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "zrjp6rdv3b",
+          "apiName": "London",
+          "apiId": "p4as7b9ejh",
+          "endpointType": "EDGE",
+          "rootResourceId": "9cs4onxor1",
           "existingResources": {
-            "/": "zrjp6rdv3b"
+            "/": "9cs4onxor1",
+            "/indunil": "ah49v8",
+            "/indunil/qa": "hfmbvo",
+            "/indunil/qa/tst": "q8bqoi"
           },
           "resourceMode": 0,
           "resourceName": "qa/indu",
@@ -93,77 +88,10 @@
           "bucket": {
             "region": "us-east-1",
             "name": "indunil1"
-          }
-        }
-      },
-      "s3indunil2": {
-        "name": "s3indunil2",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "indunil2"
-          }
-        }
-      },
-      "apigusEast1myapindunilindunilqatstany": {
-        "name": "apigusEast1myapindunilindunilqatstany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "myapindunil",
-          "apiId": "8hifidrt5c",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "5a0303edae",
-          "existingResources": {
-            "/": "5a0303edae"
           },
-          "resourceMode": 0,
-          "resourceName": "indunil/qa/tst",
-          "resourcePath": "/indunil/qa/tst",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test",
-          "mode": 1
-        }
-      },
-      "apigusEast1TestAPItestpost": {
-        "name": "apigusEast1TestAPItestpost",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/hiru/test": "2b8zt0",
-            "/testPathWithSlash": "2rkw74",
-            "/hiru": "3nc52b",
-            "/hiru/sample": "4226gg",
-            "/hiru/sqstest": "88gr2y",
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testWithSlash": "q4m4g1",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk",
-            "/hiru/snscheck": "wok1ku"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/hiru/test",
-          "resourceName": "test",
-          "resourceId": "2b8zt0",
-          "restMethod": "POST",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test",
-          "mode": 1
+          "destinationBucket": {
+            "name": "hiru.test123"
+          }
         }
       }
     },
@@ -207,7 +135,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563070586200
+    "lastSave": 1563071511251
   },
   "VCS_STATE": {
     "provider": "GitHub",

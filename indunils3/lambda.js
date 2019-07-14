@@ -1,21 +1,21 @@
 let AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
-
 exports.handler = function (event, context, callback) {
 
-    s3.putObject({
-        "Body": "ass",
-        "Bucket": "indunil2",
-        "Key": "1"
-    })
-        .promise()
+    s3.copyObject({
+        'Bucket': "hiru.test123",
+        'CopySource': `/indunil1/1.jpg`,
+        'Key': "1.jpg"
+    }).promise()
         .then(data => {
             console.log(data);           // successful response
             /*
             data = {
-                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
-                VersionId: "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
+                CopyObjectResult: {
+                    ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
+                    LastModified: "<Date Representation>"
+                }
             }
             */
         })
@@ -24,7 +24,5 @@ exports.handler = function (event, context, callback) {
         });
 
 
-
-
-    callback(null, { "message": "Successfully t executed" });
+    callback(null, { "message": "Successfully copyyy executed" });
 }
