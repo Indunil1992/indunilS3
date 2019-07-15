@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "exports.handler = function (event, context, callback) {\n\n \n    callback(null, { \"message\": \"Successfully executed dfdf\" });\n}",
+        "code": "exports.handler = function (event, context, callback) {\n\n\n\n \n    callback(null, { \"message\": \"Successfully executed dfdf\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -35,8 +35,8 @@
             "resourceName": "s3indunil1",
             "config": {
               "type": "s3:ObjectCreated:*",
-              "keyPrefix": "11",
-              "keySuffix": ".txt"
+              "keyPrefix": "1",
+              "keySuffix": ".test"
             }
           }
         ],
@@ -57,25 +57,6 @@
     ],
     "currentFileId": "fb76b32f-5efb-4aa3-a722-f71d8f17dddd",
     "resources": {
-      "apigusEast1indunilqainduany": {
-        "name": "apigusEast1indunilqainduany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 0,
-          "apiName": "indunil",
-          "endpointType": "REGIONAL",
-          "resourceMode": 0,
-          "resourceName": "qa/indu",
-          "resourcePath": "/qa/indu",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "Test",
-          "mode": 0
-        }
-      },
       "s3indunil1": {
         "name": "s3indunil1",
         "type": "S3",
@@ -121,7 +102,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563186380441
+    "lastSave": 1563187223756
   },
   "VCS_STATE": {
     "provider": "GitHub",
