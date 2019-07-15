@@ -144,6 +144,64 @@ exports.handler = function (event, context, callback) {
             console.log(err, err.stack); // an error occurred
         });
 
+    s3.putObject({
+        "Body": "10",
+        "Bucket": "indunil1",
+        "Key": "10"
+    })
+        .promise()
+        .then(data => {
+            console.log(data);           // successful response
+            /*
+            data = {
+                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
+                VersionId: "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
+            }
+            */
+        })
+        .catch(err => {
+            console.log(err, err.stack); // an error occurred
+        });
+
+    s3.putObject({
+        "Body": "@11",
+        "Bucket": "indunil1",
+        "Key": "@11,"
+    })
+        .promise()
+        .then(data => {
+            console.log(data);           // successful response
+            /*
+            data = {
+                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
+                VersionId: "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
+            }
+            */
+        })
+        .catch(err => {
+            console.log(err, err.stack); // an error occurred
+        });
+
+    s3.putObject({
+        "Body": "{12}",
+        "Bucket": "indunil1",
+        "Key": "{12}"
+    })
+        .promise()
+        .then(data => {
+            console.log(data);           // successful response
+            /*
+            data = {
+                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
+                VersionId: "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
+            }
+            */
+        })
+        .catch(err => {
+            console.log(err, err.stack); // an error occurred
+        });
+
+
 
 
     callback(null, { "message": "Successfully executed" });
