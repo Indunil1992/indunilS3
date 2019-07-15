@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    \n    callback(null, { \"message\": \"Successfully executed puooo\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.listObjects({\n        'Bucket': 'indunil1',\n        'MaxKeys': 10,\n        'Prefix': ''\n    }).promise()\n        .then(data => {\n             console.log(\"success\"); \n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n\n             console.log(\"not success\"); \n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed puooo\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,10 +32,10 @@
         },
         "triggers": [
           {
-            "resourceName": "s3induniltrigger",
+            "resourceName": "s3indunil1",
             "config": {
               "type": "s3:ObjectCreated:*",
-              "keyPrefix": "1",
+              "keyPrefix": "2",
               "keySuffix": ".jpg"
             }
           }
@@ -65,6 +65,17 @@
           "bucket": {
             "region": "us-east-1",
             "name": "indunil.trigger"
+          }
+        }
+      },
+      "s3indunil1": {
+        "name": "s3indunil1",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "indunil1"
           }
         }
       }
@@ -102,7 +113,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563190733009
+    "lastSave": 1563192013352
   },
   "VCS_STATE": {
     "provider": "GitHub",
