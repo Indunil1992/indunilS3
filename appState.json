@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunils3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.putObject({\n        \"Body\": \"1234567890\",\n        \"Bucket\": \"indunil1\",\n        \"Key\": \"142\",\n        \"ACL\": \"private\"\n    })\n        .promise()\n        .then(data => {\n            console.log(\"successful response\");\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(\"an error occurred\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully getlocation executed\" });\n}",
+        "code": "\nexports.handler = function (event, context, callback) {\n\n    \n    callback(null, { \"message\": \"Successfully getlocation executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -34,6 +34,14 @@
           {
             "resourceName": "apigusEast1Londonqainduany",
             "config": {}
+          },
+          {
+            "resourceName": "s3indunil1",
+            "config": {
+              "type": "s3:ObjectCreated:Copy",
+              "keyPrefix": "",
+              "keySuffix": ""
+            }
           }
         ],
         "testCases": {
@@ -125,7 +133,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563122544997
+    "lastSave": 1563164746298
   },
   "VCS_STATE": {
     "provider": "GitHub",
