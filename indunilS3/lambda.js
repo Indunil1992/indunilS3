@@ -3,5 +3,5 @@ exports.handler = function (event, context, callback) {
 
 
     
-    callback(null, { "message": "Successfully executed dfdf" });
+    callback(null, { "message": "Successfully executed 1" });
 }
