@@ -16,6 +16,19 @@ exports.handler = function (event, context, callback) {
             console.log(err, err.stack); // an error occurred
         });
 
+    s3.deleteObject({
+        'Bucket': "indunil1",
+        'Key': "10"
+    }).promise()
+        .then(data => {
+            console.log(data);           // successful response
+            /*
+                data = {}
+            */
+        })
+        .catch(err => {
+            console.log(err, err.stack); // an error occurred
+        });
 
 
 
