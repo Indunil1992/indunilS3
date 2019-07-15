@@ -7,13 +7,16 @@ exports.handler = function (event, context, callback) {
         'Key': "1"
     }).promise()
         .then(data => {
-            console.log(data);           // successful response
+            console.log(data);       
+            console.log("successful response 1");      // successful response
             /*
                 data = {}
             */
         })
         .catch(err => {
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack);
+             console.log("not successful response 1"); 
+              // an error occurred
         });
 
     s3.deleteObject({
@@ -21,13 +24,15 @@ exports.handler = function (event, context, callback) {
         'Key': "10"
     }).promise()
         .then(data => {
-            console.log(data);           // successful response
+            console.log(data);
+            console.log("successful response 2");           // successful response
             /*
                 data = {}
             */
         })
         .catch(err => {
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack);
+             console.log("not successful response 2");  // an error occurred
         });
 
 
