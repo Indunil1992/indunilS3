@@ -4,10 +4,10 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
     s3.deleteObject({
         'Bucket': "indunil1",
-        'Key': "1"
+        'Key': "2"
     }).promise()
         .then(data => {
-            console.log(data);       
+            console.log(data);
             console.log("successful response 1");      // successful response
             /*
                 data = {}
@@ -15,8 +15,8 @@ exports.handler = function (event, context, callback) {
         })
         .catch(err => {
             console.log(err, err.stack);
-             console.log("not successful response 1"); 
-              // an error occurred
+            console.log("not successful response 1");
+            // an error occurred
         });
 
     s3.deleteObject({
@@ -32,7 +32,7 @@ exports.handler = function (event, context, callback) {
         })
         .catch(err => {
             console.log(err, err.stack);
-             console.log("not successful response 2");  // an error occurred
+            console.log("not successful response 2");  // an error occurred
         });
 
 
