@@ -3,7 +3,7 @@ const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
 
-   
+
     s3.putObject({
         "Body": "2",
         "Bucket": "indunil1",
@@ -124,11 +124,11 @@ exports.handler = function (event, context, callback) {
         .catch(err => {
             console.log(err, err.stack); // an error occurred
         });
-
     s3.putObject({
-        "Body": "10",
+        "Body": "1",
         "Bucket": "indunil1",
-        "Key": "10"
+        "Key": "1",
+        "ACL": "private"
     })
         .promise()
         .then(data => {
@@ -143,45 +143,6 @@ exports.handler = function (event, context, callback) {
         .catch(err => {
             console.log(err, err.stack); // an error occurred
         });
-
-    s3.putObject({
-        "Body": "@11",
-        "Bucket": "indunil1",
-        "Key": "@11,"
-    })
-        .promise()
-        .then(data => {
-            console.log(data);           // successful response
-            /*
-            data = {
-                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
-                VersionId: "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
-            }
-            */
-        })
-        .catch(err => {
-            console.log(err, err.stack); // an error occurred
-        });
-
-    s3.putObject({
-        "Body": "{12}",
-        "Bucket": "indunil1",
-        "Key": "{12}"
-    })
-        .promise()
-        .then(data => {
-            console.log(data);           // successful response
-            /*
-            data = {
-                ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
-                VersionId: "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0"
-            }
-            */
-        })
-        .catch(err => {
-            console.log(err, err.stack); // an error occurred
-        });
-
 
 
 
