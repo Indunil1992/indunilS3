@@ -183,7 +183,7 @@ exports.handler = function (event, context, callback) {
         })
         .catch(err => {
             console.log(err, err.stack); 
-            console.log(""777"");// an error occurred
+            console.log("77777777777777");// an error occurred
         });
 
 
