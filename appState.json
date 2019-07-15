@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.listObjects({\n        'Bucket': 'indunil1',\n        'MaxKeys': 10,\n        'Prefix': ''\n    }).promise()\n        .then(data => {\n             console.log(\"success\"); \n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n\n             console.log(\"not success\"); \n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed puooo\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\n\nexports.handler = function (event, context, callback) {\n\n    sns.publish({\n        Message: 'hiii',\n        Subject: '123',\n        MessageAttributes: {},\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully executed puooo\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -78,6 +78,23 @@
             "name": "indunil1"
           }
         }
+      },
+      "snsusEast1TestSNS": {
+        "name": "snsusEast1TestSNS",
+        "type": "SNS",
+        "config": {
+          "topicMode": 1,
+          "topicName": "TestSNS",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
+          "topicRegion": "us-east-1",
+          "snsType": 0,
+          "subscriptions": [
+            {
+              "type": "email",
+              "endpoint": "indunil@adroitlogic.com"
+            }
+          ]
+        }
       }
     },
     "customTemplate": {
@@ -113,7 +130,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563192013352
+    "lastSave": 1563194149709
   },
   "VCS_STATE": {
     "provider": "GitHub",
