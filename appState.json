@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "exports.handler = function (event, context, callback) {\n\n \n\n\n\n    callback(null, { \"message\": \"Successfully executed dfdf\" });\n}",
+        "code": "exports.handler = function (event, context, callback) {\n\n \n    callback(null, { \"message\": \"Successfully executed dfdf\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,14 +32,10 @@
         },
         "triggers": [
           {
-            "resourceName": "apigusEast1indunilqainduany",
-            "config": {}
-          },
-          {
             "resourceName": "s3indunil1",
             "config": {
               "type": "s3:ObjectCreated:*",
-              "keyPrefix": "1",
+              "keyPrefix": "11",
               "keySuffix": ".txt"
             }
           }
@@ -125,7 +121,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563186175407
+    "lastSave": 1563186380441
   },
   "VCS_STATE": {
     "provider": "GitHub",
