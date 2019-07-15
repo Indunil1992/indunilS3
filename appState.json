@@ -1,28 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "47c32af8-46cf-4208-996c-7f29750bdbd7": {
-        "id": "47c32af8-46cf-4208-996c-7f29750bdbd7",
+      "2aece18f-3774-493b-83a1-08e45d1681b0": {
+        "id": "2aece18f-3774-493b-83a1-08e45d1681b0",
         "parent": null,
-        "name": "indunils3",
+        "name": "indunilS3",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "bcc34366-2ee8-4c20-a232-e0c66118855f"
+          "fb76b32f-5efb-4aa3-a722-f71d8f17dddd"
         ],
         "isRemovable": false,
-        "filePath": "indunils3"
+        "filePath": "indunilS3"
       },
-      "bcc34366-2ee8-4c20-a232-e0c66118855f": {
-        "id": "bcc34366-2ee8-4c20-a232-e0c66118855f",
-        "parent": "47c32af8-46cf-4208-996c-7f29750bdbd7",
+      "fb76b32f-5efb-4aa3-a722-f71d8f17dddd": {
+        "id": "fb76b32f-5efb-4aa3-a722-f71d8f17dddd",
+        "parent": "2aece18f-3774-493b-83a1-08e45d1681b0",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "indunils3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n    \n    callback(null, { \"message\": \"Successfully getlocation executed\" });\n}",
+        "filePath": "indunilS3/lambda.js",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n    s3.listObjects({\n        'Bucket': 'indunil1',\n        'MaxKeys': 3,\n        'Prefix': ''\n    }).promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,51 +32,27 @@
         },
         "triggers": [
           {
-            "resourceName": "apigusEast1Londonqainduany",
+            "resourceName": "apigusEast1indunilqainduany",
             "config": {}
-          },
-          {
-            "resourceName": "s3indunil1",
-            "config": {
-              "type": "s3:ObjectCreated:Copy",
-              "keyPrefix": "",
-              "keySuffix": ""
-            }
           }
-        ],
-        "testCases": {
-          "03dd9f6a-d7c5-4599-9bda-293652b478dd": {
-            "id": "03dd9f6a-d7c5-4599-9bda-293652b478dd",
-            "name": "Unnamed event",
-            "functionId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        ]
       }
     },
     "deletedFiles": [],
-    "rootNode": "47c32af8-46cf-4208-996c-7f29750bdbd7",
+    "rootNode": "2aece18f-3774-493b-83a1-08e45d1681b0",
     "openFiles": [
-      "bcc34366-2ee8-4c20-a232-e0c66118855f"
+      "fb76b32f-5efb-4aa3-a722-f71d8f17dddd"
     ],
-    "currentFileId": "bcc34366-2ee8-4c20-a232-e0c66118855f",
+    "currentFileId": "fb76b32f-5efb-4aa3-a722-f71d8f17dddd",
     "resources": {
-      "apigusEast1Londonqainduany": {
-        "name": "apigusEast1Londonqainduany",
+      "apigusEast1indunilqainduany": {
+        "name": "apigusEast1indunilqainduany",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "London",
-          "apiId": "p4as7b9ejh",
-          "endpointType": "EDGE",
-          "rootResourceId": "9cs4onxor1",
-          "existingResources": {
-            "/": "9cs4onxor1",
-            "/indunil": "ah49v8",
-            "/indunil/qa": "hfmbvo",
-            "/indunil/qa/tst": "q8bqoi"
-          },
+          "apiMode": 0,
+          "apiName": "indunil",
+          "endpointType": "REGIONAL",
           "resourceMode": 0,
           "resourceName": "qa/indu",
           "resourcePath": "/qa/indu",
@@ -85,7 +61,7 @@
           "enableCORS": false,
           "stageMode": 0,
           "stageName": "Test",
-          "mode": 1
+          "mode": 0
         }
       },
       "s3indunil1": {
@@ -127,19 +103,19 @@
     }
   },
   "PROJECT_META": {
-    "projectName": "indunils3",
-    "projectDescription": "s3",
+    "projectName": "indunilS3",
+    "projectDescription": "test7152019",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563164746298
+    "lastSave": 1563167010251
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
-      "name": "indunils3",
-      "url": "https://github.com/Indunil1992/indunils3"
+      "name": "indunilS3",
+      "url": "https://github.com/Indunil1992/indunilS3"
     }
   }
 }
