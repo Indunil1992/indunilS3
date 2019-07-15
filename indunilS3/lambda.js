@@ -161,7 +161,9 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack); 
+            console.log("333333333");
+            // an error occurred
         });
     s3.putObject({
         "Body": "5",
@@ -180,7 +182,8 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack); 
+            console.log(""777"");// an error occurred
         });
 
 
