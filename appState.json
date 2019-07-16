@@ -34,7 +34,7 @@
           {
             "resourceName": "s3indunil1",
             "config": {
-              "type": "s3:ObjectCreated:*",
+              "type": "s3:ObjectCreated:Post",
               "keyPrefix": "2",
               "keySuffix": ".jpg"
             }
@@ -148,7 +148,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563248042124
+    "lastSave": 1563295597831
   },
   "VCS_STATE": {
     "provider": "GitHub",
