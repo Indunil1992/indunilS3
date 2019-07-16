@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\n\nexports.handler = function (event, context, callback) {\n\n    sns.publish({\n        Message: 'hi sns ',\n        Subject: 'sub sns',\n        MessageAttributes: {\n            '1': {\n                'DataType': 'String',\n                'StringValue': 'abc'\n            }\n        },\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:topic-indunil'\n    }).promise()\n        .then(data => {\n            console.log(\"yes\");\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"no\");\n            // error handling goes here\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully executed puooo\" });\n}",
+        "code": "\n\nexports.handler = function (event, context, callback) {\n\n    \n   callback(null, { \"message\": \"Successfully executed coppp\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,12 +32,8 @@
         },
         "triggers": [
           {
-            "resourceName": "s3indunil1",
-            "config": {
-              "type": "s3:ObjectCreated:Post",
-              "keyPrefix": "2",
-              "keySuffix": ".jpg"
-            }
+            "resourceName": "apigusEast1TestAPIqainduany",
+            "config": {}
           }
         ],
         "testCases": {
@@ -57,17 +53,6 @@
     ],
     "currentFileId": "fb76b32f-5efb-4aa3-a722-f71d8f17dddd",
     "resources": {
-      "s3induniltrigger": {
-        "name": "s3induniltrigger",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "indunil.trigger"
-          }
-        }
-      },
       "s3indunil1": {
         "name": "s3indunil1",
         "type": "S3",
@@ -76,42 +61,44 @@
           "bucket": {
             "region": "us-east-1",
             "name": "indunil1"
+          },
+          "destinationBucket": {
+            "name": "test.indunil1"
           }
         }
       },
-      "snsusEast1TestSNS": {
-        "name": "snsusEast1TestSNS",
-        "type": "SNS",
+      "apigusEast1TestAPIqainduany": {
+        "name": "apigusEast1TestAPIqainduany",
+        "type": "API_GATEWAY",
         "config": {
-          "topicMode": 1,
-          "topicName": "TestSNS",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "subscriptions": [
-            {
-              "type": "email",
-              "endpoint": "indunil@adroitlogic.com"
-            }
-          ]
-        }
-      },
-      "snsusEast1topicIndunil": {
-        "name": "snsusEast1topicIndunil",
-        "type": "SNS",
-        "config": {
-          "topicMode": 0,
-          "topicName": "topic-indunil",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:topic-indunil",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "topicDisplayName": "indunil_SN",
-          "subscriptions": [
-            {
-              "type": "email",
-              "endpoint": "indunil@adroitlogic.com"
-            }
-          ]
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/hiru/test": "2b8zt0",
+            "/testPathWithSlash": "2rkw74",
+            "/hiru": "3nc52b",
+            "/hiru/sample": "4226gg",
+            "/hiru/sqstest": "88gr2y",
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testWithSlash": "q4m4g1",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk",
+            "/hiru/snscheck": "wok1ku"
+          },
+          "resourceMode": 0,
+          "resourceName": "qa/indu",
+          "resourcePath": "/qa/indu",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test1",
+          "mode": 1
         }
       }
     },
@@ -148,7 +135,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563295597831
+    "lastSave": 1563297816911
   },
   "VCS_STATE": {
     "provider": "GitHub",
