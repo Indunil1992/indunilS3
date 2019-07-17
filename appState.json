@@ -32,10 +32,8 @@
         },
         "triggers": [
           {
-            "resourceName": "sqsHiru1T",
-            "config": {
-              "BatchSize": "10"
-            }
+            "resourceName": "apigusEast1TestAPIqainduany",
+            "config": {}
           }
         ],
         "testCases": {
@@ -100,6 +98,40 @@
           "receiveMessageWaitTime": "0",
           "queueARN": "arn:aws:sqs:us-east-1:318300609668:Hiru1T"
         }
+      },
+      "apigusEast1TestAPIqainduany": {
+        "name": "apigusEast1TestAPIqainduany",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/hiru/test": "2b8zt0",
+            "/testPathWithSlash": "2rkw74",
+            "/hiru": "3nc52b",
+            "/hiru/sample": "4226gg",
+            "/hiru/sqstest": "88gr2y",
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testWithSlash": "q4m4g1",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk",
+            "/hiru/snscheck": "wok1ku"
+          },
+          "resourceMode": 0,
+          "resourceName": "qa/indu",
+          "resourcePath": "/qa/indu",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test1",
+          "mode": 1
+        }
       }
     },
     "customTemplate": {
@@ -142,7 +174,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563363470920
+    "lastSave": 1563364758161
   },
   "VCS_STATE": {
     "provider": "GitHub",
