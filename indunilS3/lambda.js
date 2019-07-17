@@ -5,13 +5,13 @@ exports.handler = function (event, context, callback) {
 
     s3.copyObject({
         'Bucket': "indunil.trigger",
-        'CopySource': `/indunil1/1`,
-        'Key': "1"
+        'CopySource': `/indunil1/1.jpg`,
+        'Key': "1.jpg"
     }).promise()
         .then(data => {
-            console.log(data);      
-            console.log("yep");  
-              // successful response
+            console.log(data);
+            console.log("yep");
+            // successful response
             /*
             data = {
                 CopyObjectResult: {
@@ -22,7 +22,7 @@ exports.handler = function (event, context, callback) {
             */
         })
         .catch(err => {
-            console.log("noooo"); 
+            console.log("noooo");
             console.log(err, err.stack); // an error occurred
         });
 
