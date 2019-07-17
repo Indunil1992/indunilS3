@@ -8,7 +8,7 @@ exports.handler = function (event, context, callback) {
         QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/test-queue.fifo`,
         AttributeNames: ['MessageGroupId'],
         MaxNumberOfMessages: '10',
-        VisibilityTimeout: '30',
+        VisibilityTimeout: '80',
         WaitTimeSeconds: '10',
         MessageAttributeNames: ['abs']
     }).promise()
