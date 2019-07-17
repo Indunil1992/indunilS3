@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.copyObject({\n        'Bucket': \"indunil.trigger\",\n        'CopySource': `/indunil1/1.jpg`,\n        'Key': \"1.jpg\"\n    }).promise()\n        .then(data => {\n            console.log(data);\n            console.log(\"yep\");\n            // successful response\n            /*\n            data = {\n                CopyObjectResult: {\n                    ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                    LastModified: \"<Date Representation>\"\n                }\n            }\n            */\n        })\n        .catch(err => {\n            console.log(\"noooo\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully executed rrr\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n\n    s3.copyObject({\n        'Bucket': \"indunil1\",\n        'CopySource': `/hiru.test123/1.jpg`,\n        'Key': \"1.jpg\"\n    }).promise()\n        .then(data => {\n            console.log(data);\n            console.log(\"yep\");\n            // successful response\n            /*\n            data = {\n                CopyObjectResult: {\n                    ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                    LastModified: \"<Date Representation>\"\n                }\n            }\n            */\n        })\n        .catch(err => {\n            console.log(\"noooo\");\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n\n    callback(null, { \"message\": \"Successfully executed rrr\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -34,8 +34,8 @@
           {
             "resourceName": "s3indunil1",
             "config": {
-              "type": "s3:ObjectRemoved:DeleteMarkerCreated",
-              "keyPrefix": "2",
+              "type": "s3:ObjectCreated:Copy",
+              "keyPrefix": "",
               "keySuffix": ".jpg"
             }
           }
@@ -65,9 +65,6 @@
           "bucket": {
             "region": "us-east-1",
             "name": "indunil1"
-          },
-          "destinationBucket": {
-            "name": "indunil.trigger"
           }
         }
       },
@@ -87,6 +84,20 @@
               "endpoint": "indunil@adroitlogic.com"
             }
           ]
+        }
+      },
+      "s3hirutest123": {
+        "name": "s3hirutest123",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "hiru.test123"
+          },
+          "destinationBucket": {
+            "name": "indunil1"
+          }
         }
       }
     },
@@ -123,7 +134,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1563342813971
+    "lastSave": 1563354017541
   },
   "VCS_STATE": {
     "provider": "GitHub",

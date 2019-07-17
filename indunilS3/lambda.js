@@ -4,8 +4,8 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
     s3.copyObject({
-        'Bucket': "indunil.trigger",
-        'CopySource': `/indunil1/1.jpg`,
+        'Bucket': "indunil1",
+        'CopySource': `/hiru.test123/1.jpg`,
         'Key': "1.jpg"
     }).promise()
         .then(data => {
