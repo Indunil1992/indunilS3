@@ -5,7 +5,7 @@ const sqs = new SL_AWS.SQS(AWS);
 exports.handler = function (event, context, callback) {
 
     sqs.receiveMessage({
-        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/test-queue.fifo`,
+        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/test`,
         AttributeNames: ['MessageGroupId'],
         MaxNumberOfMessages: '10',
         VisibilityTimeout: '80',
