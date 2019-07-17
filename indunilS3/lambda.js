@@ -7,7 +7,7 @@ exports.handler = function (event, context, callback) {
     sqs.receiveMessage({
         QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/Hiru1T`,
         AttributeNames: ['All'],
-        MaxNumberOfMessages: '1',
+        MaxNumberOfMessages: '10',
         VisibilityTimeout: '30',
         WaitTimeSeconds: '15',
         MessageAttributeNames: ['a', 's', 'd', 'f']
