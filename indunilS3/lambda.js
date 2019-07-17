@@ -1,32 +1,36 @@
 let AWS = require('aws-sdk');
-const s3 = new AWS.S3();
+let SL_AWS = require('slappforge-sdk-aws');
+const sqs = new SL_AWS.SQS(AWS);
 
 exports.handler = function (event, context, callback) {
 
-    s3.copyObject({
-        'Bucket': "indunil1",
-        'CopySource': `/hiru.test123/1.jpg`,
-        'Key': "1.jpg"
+    sqs.receiveMessage({
+        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/Hiru1T`,
+        AttributeNames: ['All'],
+        MaxNumberOfMessages: '1',
+        VisibilityTimeout: '30',
+        WaitTimeSeconds: '15',
+        MessageAttributeNames: ['a', 's', 'd', 'f']
     }).promise()
-        .then(data => {
-            console.log(data);
-            console.log("yep");
-            // successful response
-            /*
-            data = {
-                CopyObjectResult: {
-                    ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
-                    LastModified: "<Date Representation>"
-                }
+        .then(receivedMsgData => {
+            if (!!(receivedMsgData) && !!(receivedMsgData.Messages)) {
+                let receivedMessages = receivedMsgData.Messages;
+                receivedMessages.forEach(message => {
+                    console.log("msgeeee");
+                    // your logic to access each message through out the loop. Each message is available under variable message 
+                    // within this block
+                });
+            } else {
+                console.log("no  msgeeee");
+                // No messages to process
             }
-            */
         })
         .catch(err => {
-            console.log("noooo");
-            console.log(err, err.stack); // an error occurred
+            console.log("errr msgeeee");
+            // error handling goes here
         });
 
 
 
-    callback(null, { "message": "Successfully executed rrr" });
+    callback(null, { "message": "Successfully executed SQS" });
 }
