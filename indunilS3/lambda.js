@@ -1,22 +1,29 @@
 let AWS = require('aws-sdk');
-const sns = new AWS.SNS();
+const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
 
-    sns.publish({
-        Message: 'msg sns',
-        Subject: 'sub sns',
-        MessageAttributes: {},
-        MessageStructure: 'String',
-        TopicArn: 'arn:aws:sns:us-east-1:318300609668:indunil-topic'
+    s3.copyObject({
+        'Bucket': "indunil.trigger",
+        'CopySource': `/indunil1/1`,
+        'Key': "1"
     }).promise()
         .then(data => {
-            console.log("yep");
-            // your code goes here
+            console.log(data);      
+            console.log("yep");  
+              // successful response
+            /*
+            data = {
+                CopyObjectResult: {
+                    ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
+                    LastModified: "<Date Representation>"
+                }
+            }
+            */
         })
         .catch(err => {
-            console.log("nooo");
-            // error handling goes here
+            console.log("noooo"); 
+            console.log(err, err.stack); // an error occurred
         });
 
 
