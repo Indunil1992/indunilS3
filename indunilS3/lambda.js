@@ -11,14 +11,7 @@ exports.handler = function (event, context, callback) {
         Message: {
             Body: {
                 Html: {
-                    Data: `<html>
-    <body>
-    
-    <h1>This is a Heading</h1>
-    <p>This is a paragraph.</p>
-    
-    </body>
-    </html>`
+                    Data: `<p>This is a paragraph.</p><p>This is another paragraph.</p>`
                 }
             },
             Subject: {
