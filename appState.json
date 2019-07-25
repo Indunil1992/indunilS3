@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n   \n\n    callback(null, { \"message\": \"Successfully executed SQS\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst ses = new AWS.SES();\n\nexports.handler = function (event, context, callback) {\n    ses.sendEmail({\n        Destination: {\n            ToAddresses: ['indunil@adroitlogic.com'],\n            CcAddresses: ['indunil@adroitlogic.com'],\n            BccAddresses: ['indunil@adroitlogic.com']\n        },\n        Message: {\n            Body: {\n                Html: {\n                    Data: `<html>\n    <body>\n    \n    <h1>This is a Heading</h1>\n    <p>This is a paragraph.</p>\n    \n    </body>\n    </html>`\n                }\n            },\n            Subject: {\n                Data: 'test run 25'\n            }\n        },\n        Source: 'indunil@adroitlogic.com'\n    }, function (err, data) {\n        if (err) console.log(err, err.stack); // an error occurred\n        else console.log(data);           // successful response\n    });\n\n\n    callback(null, { \"message\": \"Successfully executed SQS\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -53,131 +53,6 @@
     ],
     "currentFileId": "fb76b32f-5efb-4aa3-a722-f71d8f17dddd",
     "resources": {
-      "s3indunil1": {
-        "name": "s3indunil1",
-        "type": "S3",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "indunil1"
-          }
-        }
-      },
-      "s3hirutest123": {
-        "name": "s3hirutest123",
-        "type": "S3",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "hiru.test123"
-          },
-          "destinationBucket": {
-            "name": "indunil1"
-          }
-        }
-      },
-      "sqsHiru1T": {
-        "name": "sqsHiru1T",
-        "type": "SQS",
-        "config": {
-          "mode": 1,
-          "existing": true,
-          "name": "Hiru1T",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/Hiru1T",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": "0",
-          "deliveryDelayUnit": "seconds",
-          "queueType": "standardQueue",
-          "defaultVisibilityTimeout": "120",
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": "345600",
-          "messageRetentionPeriodUnit": "seconds",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": "0",
-          "queueARN": "arn:aws:sqs:us-east-1:318300609668:Hiru1T"
-        }
-      },
-      "apigusEast1TestAPIqainduany": {
-        "name": "apigusEast1TestAPIqainduany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/hiru/test": "2b8zt0",
-            "/testPathWithSlash": "2rkw74",
-            "/hiru": "3nc52b",
-            "/hiru/sample": "4226gg",
-            "/hiru/sqstest": "88gr2y",
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testWithSlash": "q4m4g1",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk",
-            "/hiru/snscheck": "wok1ku"
-          },
-          "resourceMode": 0,
-          "resourceName": "qa/indu",
-          "resourcePath": "/qa/indu",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test11",
-          "mode": 1
-        }
-      },
-      "apigusEast1sachithraAPInameqainduany": {
-        "name": "apigusEast1sachithraAPInameqainduany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "sachithraAPIname",
-          "apiId": "052p9kjn18",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "zrjp6rdv3b",
-          "existingResources": {
-            "/": "zrjp6rdv3b"
-          },
-          "resourceMode": 0,
-          "resourceName": "qa/indu",
-          "resourcePath": "/qa/indu",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test",
-          "mode": 1
-        }
-      },
-      "sqstestQueuefifo": {
-        "name": "sqstestQueuefifo",
-        "type": "SQS",
-        "config": {
-          "mode": 1,
-          "existing": true,
-          "name": "test-queue.fifo",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/test-queue.fifo",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": "0",
-          "deliveryDelayUnit": "seconds",
-          "queueType": "fifoQueue",
-          "defaultVisibilityTimeout": "30",
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": "345600",
-          "messageRetentionPeriodUnit": "seconds",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": "0",
-          "queueARN": "arn:aws:sqs:us-east-1:318300609668:test-queue.fifo"
-        }
-      },
       "apigusEast1myapitestqainduany": {
         "name": "apigusEast1myapitestqainduany",
         "type": "API_GATEWAY",
@@ -203,30 +78,21 @@
           "mode": 1
         }
       },
-      "sqstest": {
-        "name": "sqstest",
-        "type": "SQS",
+      "ses-indunil@adroitlogic.com": {
+        "name": "ses-indunil@adroitlogic.com",
+        "type": "SES",
         "config": {
-          "mode": 0,
-          "existing": false,
-          "name": "test",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/test",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": 0,
-          "deliveryDelayUnit": "seconds",
-          "useRedrivePolicy": false,
-          "useSSE": false,
-          "kmsCustomerMasterKey": "default",
-          "accountId": "318300609668",
-          "dataKeyReusePeriod": 5,
-          "queueType": "standardQueue",
-          "defaultVisibilityTimeout": 30,
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": 4,
-          "messageRetentionPeriodUnit": "days",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": 0,
-          "deadLetterQueueName": ""
+          "selectedIdentity": "indunil@adroitlogic.com",
+          "projectRegion": "us-east-1",
+          "params": {
+            "to": "indunil@adroitlogic.com",
+            "cc": "indunil@adroitlogic.com",
+            "bcc": "indunil@adroitlogic.com",
+            "subject": "test run 25",
+            "body": {
+              "html": "<html>\n    <body>\n    \n    <h1>This is a Heading</h1>\n    <p>This is a paragraph.</p>\n    \n    </body>\n    </html>"
+            }
+          }
         }
       }
     },
@@ -270,7 +136,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1564040607720
+    "lastSave": 1564046407720
   },
   "VCS_STATE": {
     "provider": "GitHub",
