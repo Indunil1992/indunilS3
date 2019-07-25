@@ -6,12 +6,12 @@ exports.handler = function (event, context, callback) {
         Destination: {
             ToAddresses: ['indunil@adroitlogic.com'],
             CcAddresses: ['indunil@adroitlogic.com'],
-            BccAddresses: ['indunil@adroitlogic.com']
+            BccAddresses: []
         },
         Message: {
             Body: {
                 Html: {
-                    Data: `<p>This is a paragraph.</p><p>This is another paragraph.</p>`
+                    Data: `<i>Italic text.</i> <b>Bold text.</b> <big>Big text.</big>`
                 }
             },
             Subject: {
