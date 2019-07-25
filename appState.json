@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilS3/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst ses = new AWS.SES();\n\nexports.handler = function (event, context, callback) {\n    ses.sendEmail({\n        Destination: {\n            ToAddresses: ['indunil@adroitlogic.com'],\n            CcAddresses: ['indunil@adroitlogic.com'],\n            BccAddresses: []\n        },\n        Message: {\n            Body: {\n                Html: {\n                    Data: `<i>Italic text.</i> <b>Bold text.</b> <big>Big text.</big>`\n                }\n            },\n            Subject: {\n                Data: 'test run 25'\n            }\n        },\n        Source: 'indunil@adroitlogic.com'\n    }, function (err, data) {\n        if (err) console.log(err, err.stack); // an error occurred\n        else console.log(data);           // successful response\n    });\n\n\n    callback(null, { \"message\": \"Successfully executed SQS\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst ses = new AWS.SES();\n\nexports.handler = function (event, context, callback) {\n    ses.sendEmail({\n        Destination: {\n            ToAddresses: ['indunil@adroitlogic.com'],\n            CcAddresses: ['indunil@adroitlogic.com'],\n            BccAddresses: []\n        },\n        Message: {\n            Body: {\n                Text: {\n                    Data: `<i>Italic text.</i> \n<b>Bold text.</b> \n<big>Big text.</big>`\n                }\n            },\n            Subject: {\n                Data: 'test check 123'\n            }\n        },\n        Source: 'indunil@adroitlogic.com'\n    }, function (err, data) {\n        if (err) console.log(err, err.stack); // an error occurred\n        else console.log(data);           // successful response\n    });\n\n\n    callback(null, { \"message\": \"Successfully executed SQS\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -88,9 +88,10 @@
             "to": "indunil@adroitlogic.com",
             "cc": "indunil@adroitlogic.com",
             "bcc": "",
-            "subject": "test run 25",
+            "subject": "test check 123",
             "body": {
-              "html": "<i>Italic text.</i> <b>Bold text.</b> <big>Big text.</big>"
+              "text": "<i>Italic text.</i> \n<b>Bold text.</b> \n<big>Big text.</big>",
+              "html": ""
             }
           }
         }
@@ -245,7 +246,8 @@
           "receiveMessageWaitTime": 0,
           "deadLetterQueueName": ""
         }
-      }
+      },
+      "undefined": {}
     },
     "customTemplate": {
       "dialect": null,
@@ -287,7 +289,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1564047041169
+    "lastSave": 1564047160916
   },
   "VCS_STATE": {
     "provider": "GitHub",
